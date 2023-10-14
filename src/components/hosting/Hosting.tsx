@@ -27,9 +27,9 @@ function Hosting() {
                     Sign up and get started quickly. Accessed via a web browser,
                     no installation is necessary.
                   </p>
-                  <a href="#" className="btn btn-primary">
+                  <Link to="/checkout" className="btn btn-primary">
                     Next
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="row">
@@ -42,9 +42,9 @@ function Hosting() {
                     Download and install on your own infrastructure or in our
                     public cloud environment.
                   </p>
-                  <a href="#" className="btn btn-primary">
+                  <Link to="/checkout" className="btn btn-primary">
                     Next
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

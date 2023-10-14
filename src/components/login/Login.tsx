@@ -9,6 +9,8 @@ import { logIn } from "../service";
 // import axios from 'axios';
 import { AiFillGoogleCircle, AiFillGithub } from "react-icons/ai";
 import { BsMicrosoft } from "react-icons/bs";
+import { FaUserTie } from "react-icons/fa";
+import lock from "../assets/images/2fa.png";
 
 const Login = () => {
   //   Removing white space through jquery
@@ -114,11 +116,13 @@ const Login = () => {
                 <button type="submit" className="btn btn-primary tpspc">
                   Log In
                 </button>
-                <div className="my-3">
+                <div className="my-4 text-center">
                   <div>
                     <AiFillGoogleCircle size={30} className="mr-3" />
                     <AiFillGithub size={30} className="mr-3" />
                     <BsMicrosoft size={23} className="mr-3" />
+                    <FaUserTie size={23} className="mr-3" />
+                    <img src={lock} alt="" width={40} />
                   </div>
                 </div>
               </form>
