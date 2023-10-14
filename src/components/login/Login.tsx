@@ -7,6 +7,8 @@ import { LoginFormSchema } from "./LoginFormSchema";
 import $ from "jquery";
 import { logIn } from "../service";
 // import axios from 'axios';
+import { AiFillGoogleCircle, AiFillGithub } from "react-icons/ai";
+import { BsMicrosoft } from "react-icons/bs";
 
 const Login = () => {
   //   Removing white space through jquery
@@ -112,6 +114,13 @@ const Login = () => {
                 <button type="submit" className="btn btn-primary tpspc">
                   Log In
                 </button>
+                <div className="my-3">
+                  <div>
+                    <AiFillGoogleCircle size={30} className="mr-3" />
+                    <AiFillGithub size={30} className="mr-3" />
+                    <BsMicrosoft size={23} className="mr-3" />
+                  </div>
+                </div>
               </form>
             </div>
           </div>
