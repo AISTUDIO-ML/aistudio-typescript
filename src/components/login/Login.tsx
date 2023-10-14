@@ -8,7 +8,7 @@ import $ from "jquery";
 import { logIn } from "../service";
 // import axios from 'axios';
 import { AiFillGoogleCircle, AiFillGithub } from "react-icons/ai";
-import { BsMicrosoft } from "react-icons/bs";
+import { BsMicrosoft, BsFillShieldLockFill } from "react-icons/bs";
 import { FaUserTie } from "react-icons/fa";
 import lock from "../assets/images/2fa.png";
 
@@ -122,7 +122,7 @@ const Login = () => {
                     <AiFillGithub size={30} className="mr-3" />
                     <BsMicrosoft size={23} className="mr-3" />
                     <FaUserTie size={23} className="mr-3" />
-                    <img src={lock} alt="" width={40} />
+                    <BsFillShieldLockFill size={23} className="mr-3" />
                   </div>
                 </div>
               </form>
