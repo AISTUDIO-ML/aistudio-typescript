@@ -4,6 +4,7 @@ import icn_hst from "../assets/images/icn_hst.png";
 import icn_slf from "../assets/images/icn_slf.png";
 import { Link } from "react-router-dom";
 import Header from "../header/Header";
+import HoneyPotz from "../HoneyPotz";
 
 function Hosting() {
   return (
@@ -65,6 +66,7 @@ function Hosting() {
         </div>
     </div> */}
       </section>
+      <HoneyPotz />
     </>
   );
 }

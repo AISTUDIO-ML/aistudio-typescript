@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import honeypotz from "../assets/images/honeypotz.png";
+import HoneyPotz from "../HoneyPotz";
 
 const PricingTable: React.FC = () => {
   // [script async src="https://js.stripe.com/v3/pricing-table.js"][/script]
@@ -43,7 +45,12 @@ const PricingTable: React.FC = () => {
     document.head.appendChild(stripeJs);
   }, []);
 
-  return <div id="stripe_container"></div>;
+  return (
+    <>
+      <div id="stripe_container"></div>
+      <HoneyPotz />
+    </>
+  );
 };
 
 export default PricingTable;

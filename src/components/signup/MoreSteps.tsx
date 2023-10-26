@@ -5,8 +5,17 @@ import Header from "../header/Header";
 import { useFormik } from "formik";
 import { MoreStepSchema } from "./MoreStepSchema";
 import $ from "jquery";
+import HoneyPotz from "../HoneyPotz";
 
-function MoreSteps() {
+interface MoreStepsProps {
+  collectedData: any;
+  setCollectedData: any;
+}
+
+const MoreSteps: React.FC<MoreStepsProps> = ({
+  collectedData,
+  setCollectedData,
+}) => {
   // Removing white space through jquery
   useEffect(() => {
     $("input#space").on({
@@ -35,13 +44,28 @@ function MoreSteps() {
 
       // If we hit the Login Button, the value provided by user will be stored in "values"
       onSubmit: (values) => {
-        console.log(values);
+        console.log("Collected Data", { ...collectedData, ...values });
+        setCollectedData({ ...collectedData, ...values });
+        // Create User
+        fetch("http://20.83.180.244:5000/users/singup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: collectedData.email,
+            password: collectedData.password,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err));
       },
     });
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <section className="main">
         <div className="row">
           <div className="col">
@@ -132,8 +156,9 @@ function MoreSteps() {
           </div>
         </div> */}
       </section>
+      <HoneyPotz />
     </>
   );
-}
+};
 
 export default MoreSteps;

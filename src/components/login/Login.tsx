@@ -11,6 +11,8 @@ import { AiFillGoogleCircle, AiFillGithub } from "react-icons/ai";
 import { BsMicrosoft, BsFillShieldLockFill } from "react-icons/bs";
 import { FaUserTie } from "react-icons/fa";
 import lock from "../assets/images/2fa.png";
+import honeypotz1 from "../assets/images/honeypotz1.png";
+import HoneyPotz from "../HoneyPotz";
 
 const Login = () => {
   //   Removing white space through jquery
@@ -116,13 +118,13 @@ const Login = () => {
                 <button type="submit" className="btn btn-primary tpspc">
                   Log In
                 </button>
-                <div className="my-4 text-center">
+                <div className="my-4">
                   <div>
-                    <AiFillGoogleCircle size={30} className="mr-3" />
-                    <AiFillGithub size={30} className="mr-3" />
-                    <BsMicrosoft size={23} className="mr-3" />
-                    <FaUserTie size={23} className="mr-3" />
-                    <BsFillShieldLockFill size={23} className="mr-3" />
+                    <AiFillGoogleCircle size={30} className="social-icons" />
+                    <AiFillGithub size={30} className="social-icons" />
+                    <BsMicrosoft size={23} className="social-icons" />
+                    <FaUserTie size={23} className="social-icons" />
+                    <BsFillShieldLockFill size={23} className="social-icons" />
                   </div>
                 </div>
               </form>
@@ -153,6 +155,7 @@ const Login = () => {
         </div>
       </div> */}
       </section>
+      <HoneyPotz />
     </>
   );
 };
