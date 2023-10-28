@@ -6,6 +6,8 @@ import { useFormik } from "formik";
 import { MoreStepSchema } from "./MoreStepSchema";
 import $ from "jquery";
 import HoneyPotz from "../HoneyPotz";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 interface MoreStepsProps {
   collectedData: any;
@@ -16,6 +18,10 @@ const MoreSteps: React.FC<MoreStepsProps> = ({
   collectedData,
   setCollectedData,
 }) => {
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = React.useState(false);
+
   // Removing white space through jquery
   useEffect(() => {
     $("input#space").on({
@@ -46,7 +52,9 @@ const MoreSteps: React.FC<MoreStepsProps> = ({
       onSubmit: (values) => {
         console.log("Collected Data", { ...collectedData, ...values });
         setCollectedData({ ...collectedData, ...values });
+
         // Create User
+        setLoading(true);
         fetch("http://20.83.180.244:5000/users/singup", {
           method: "POST",
           headers: {
@@ -58,8 +66,21 @@ const MoreSteps: React.FC<MoreStepsProps> = ({
           }),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err));
+          .then((data) => {
+            console.log(data);
+            if (data.error) {
+              return toast.error(data.message);
+            }
+            toast.success("User Created Successfully Please Login");
+            navigate("/");
+          })
+          .catch((err) => {
+            toast.error("User Creation Failed");
+            console.log(err);
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       },
     });
 
@@ -126,6 +147,7 @@ const MoreSteps: React.FC<MoreStepsProps> = ({
                 <button
                   type="submit"
                   className="btn btn-primary tpspc float-right"
+                  disabled={loading}
                 >
                   Next
                 </button>
@@ -156,7 +178,7 @@ const MoreSteps: React.FC<MoreStepsProps> = ({
           </div>
         </div> */}
       </section>
-      <HoneyPotz />
+      {/* <HoneyPotz /> */}
     </>
   );
 };

@@ -13,8 +13,16 @@ import { FaUserTie } from "react-icons/fa";
 import lock from "../assets/images/2fa.png";
 import honeypotz1 from "../assets/images/honeypotz1.png";
 import HoneyPotz from "../HoneyPotz";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useUserStore } from "../../store/user";
+
+const baseUrl = "http://20.83.180.244:5000";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = React.useState(false);
+  const setUser = useUserStore((state: any) => state.setUser);
   //   Removing white space through jquery
   useEffect(() => {
     $("input#space").on({
@@ -42,7 +50,33 @@ const Login = () => {
 
       // If we hit the Login Button, the value provided by user will be stored in "values"
       onSubmit: (values) => {
-        logIn(values);
+        setLoading(true);
+        axios
+          .post(`${baseUrl}/users/login`, {
+            username: values.email,
+            password: values.password,
+          })
+          .then((response) => {
+            console.log(response.data);
+            if (response.data.message) {
+              toast.error(response.data.message);
+              return;
+            }
+            localStorage.setItem("token", JSON.stringify(response.data.token));
+            setUser({ token: response.data.token });
+            toast.success("Logged in Successfully!");
+          })
+          .catch((error) => {
+            if (error.response.status === 401) {
+              toast.error("Invalid Credentials");
+              return;
+            }
+            console.log("An error occurred:", error.response);
+            toast.error("Login Failed");
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       },
     });
 
@@ -115,7 +149,11 @@ const Login = () => {
                     </a>
                   </div>
                 </div>
-                <button type="submit" className="btn btn-primary tpspc">
+                <button
+                  disabled={loading}
+                  type="submit"
+                  className="btn btn-primary tpspc"
+                >
                   Log In
                 </button>
                 <div className="my-4">
