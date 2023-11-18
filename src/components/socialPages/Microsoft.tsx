@@ -1,0 +1,42 @@
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../../store/user";
+import { toast } from "react-toastify";
+
+const Microsoft = () => {
+  const navigate = useNavigate();
+  const setUser = useUserStore((state: any) => state.setUser);
+
+  const handleMicrosoftLogin = () => {
+    const queryParams = window.location.href.split("callback")[1];
+    // console.log(queryParams, "queryParams");
+    fetch(
+      "http://20.83.180.244:5000/users/microsoft-auth-callback/" + queryParams,
+      {
+        method: "GET",
+      }
+    )
+      .then((response: any) => {
+        // getting token from headers
+        console.log(response.headers.get("authorization"));
+        if (response.ok) {
+          setUser(true);
+          navigate("/");
+          toast.success("Logged in Successfully!");
+        }
+      })
+      .catch((error) => {
+        toast.error("Something went wrong!");
+        console.log("An error occurred:", error);
+      });
+  };
+
+  useEffect(() => {
+    console.log("component rendered");
+    // handleMicrosoftLogin();
+  }, []);
+
+  return <div className="text-center">Loading...</div>;
+};
+
+export default Microsoft;

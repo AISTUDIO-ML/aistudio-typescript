@@ -80,6 +80,17 @@ const Login = () => {
       },
     });
 
+  const handleGoogleLogin = () => {
+    axios
+      .get("http://20.83.180.244:5000/users/google-login")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("An error occurred:", error);
+      });
+  };
+
   return (
     <>
       <Header />
@@ -144,9 +155,9 @@ const Login = () => {
                     </div>
                   </div>
                   <div className="col">
-                    <a href="#" className="forgot">
+                    <Link to="/forgot-password" className="forgot">
                       Forgot password?
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <button
@@ -158,9 +169,15 @@ const Login = () => {
                 </button>
                 <div className="my-4">
                   <div>
-                    <AiFillGoogleCircle size={30} className="social-icons" />
-                    <AiFillGithub size={30} className="social-icons" />
-                    <BsMicrosoft size={23} className="social-icons" />
+                    <a href="http://20.83.180.244:5000/users/google-login">
+                      <AiFillGoogleCircle size={30} className="social-icons" />
+                    </a>
+                    <a href="http://20.83.180.244:5000/users/github-login">
+                      <AiFillGithub size={30} className="social-icons" />
+                    </a>
+                    <a href="http://20.83.180.244:5000/users/github-login">
+                      <BsMicrosoft size={23} className="social-icons" />
+                    </a>
                     <FaUserTie size={23} className="social-icons" />
                     <BsFillShieldLockFill size={23} className="social-icons" />
                   </div>
