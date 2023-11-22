@@ -24,8 +24,8 @@ const Google = () => {
       })
       .then((data) => {
         if (data.status === "success") {
-          setUser(true);
           navigate("/");
+          setUser(true);
           toast.success("Logged in Successfully!");
         }
       })

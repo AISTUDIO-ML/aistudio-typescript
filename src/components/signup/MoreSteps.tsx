@@ -71,7 +71,7 @@ const MoreSteps: React.FC<MoreStepsProps> = ({
             if (data.error) {
               return toast.error(data.message);
             }
-            toast.success("User Created Successfully Please Login");
+            toast.success("User Created Successfully Please Verify Your Email");
             navigate("/");
           })
           .catch((err) => {

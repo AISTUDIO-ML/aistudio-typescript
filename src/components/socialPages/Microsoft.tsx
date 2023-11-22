@@ -21,8 +21,8 @@ const Microsoft = () => {
         // getting token from headers
         console.log(response.headers.get("authorization"));
         if (response.ok) {
-          setUser(true);
           navigate("/");
+          setUser(true);
           toast.success("Logged in Successfully!");
         }
       })
