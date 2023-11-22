@@ -31,8 +31,10 @@ const VerifyEmail = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success("Email verified successfully");
+        toast.success(data?.message);
+      } else {
+        toast.error("Something went wrong try again");
       }
-      toast.success(data?.message);
       console.log(data);
       navigate("/");
     } catch (error) {
