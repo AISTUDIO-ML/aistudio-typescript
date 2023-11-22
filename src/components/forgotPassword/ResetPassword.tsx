@@ -43,8 +43,11 @@ const ResetPassword = () => {
       initialValues: formInitialValues,
       validationSchema: Yup.object({
         password: Yup.string()
-          .required("Password Required")
-          .min(6, "Password must be at least 6 characters"),
+          .required("Please Enter Your Password")
+          .matches(
+            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
+            "Enter Strong Password including Capital letter, Special characters and numbers"
+          ),
         confirmPassword: Yup.string()
           .required("Confirm Password Required")
           .min(6, "Password must be at least 6 characters")
@@ -63,6 +66,7 @@ const ResetPassword = () => {
           .then((response) => {
             console.log(response.data);
             toast.success("Password Reset Successfully!");
+            navigate("/");
           })
           .catch((error) => {
             console.log("An error occurred:", error.response);
