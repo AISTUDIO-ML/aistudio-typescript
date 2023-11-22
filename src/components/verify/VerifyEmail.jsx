@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const baseUrl = "http://20.83.180.244:5000";
+const baseUrl = "https://demoapp.fuzonmedia.com";
 
 const VerifyEmail = () => {
   const params = useParams();

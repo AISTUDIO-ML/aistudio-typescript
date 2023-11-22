@@ -11,7 +11,7 @@ const Github = () => {
     const queryParams = window.location.href.split("callback")[1];
     // console.log(queryParams, "queryParams");
     fetch(
-      "http://20.83.180.244:5000/users/github-auth-callback" + queryParams,
+      "https://demoapp.fuzonmedia.com/users/github-auth-callback" + queryParams,
       {
         method: "GET",
       }

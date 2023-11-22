@@ -10,7 +10,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useUserStore } from "../../store/user";
 
-const baseUrl = "http://20.83.180.244:5000";
+const baseUrl = "https://demoapp.fuzonmedia.com";
 
 const ForgotLink = () => {
   const [email, setEmail] = useState("");

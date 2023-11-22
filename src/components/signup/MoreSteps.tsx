@@ -55,7 +55,7 @@ const MoreSteps: React.FC<MoreStepsProps> = ({
 
         // Create User
         setLoading(true);
-        fetch("http://20.83.180.244:5000/users/singup", {
+        fetch("https://demoapp.fuzonmedia.com/users/singup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

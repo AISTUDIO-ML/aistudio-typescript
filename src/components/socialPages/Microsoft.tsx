@@ -11,7 +11,8 @@ const Microsoft = () => {
     const queryParams = window.location.href.split("callback")[1];
     // console.log(queryParams, "queryParams");
     fetch(
-      "http://20.83.180.244:5000/users/microsoft-auth-callback/" + queryParams,
+      "https://demoapp.fuzonmedia.com/users/microsoft-auth-callback/" +
+        queryParams,
       {
         method: "GET",
       }
